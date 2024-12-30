@@ -39,4 +39,4 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
       - uses: dtolnay/rust-toolchain@stable
-      - run: cargo test --profile=ci --no-fail-fast
+      - run: cargo test --no-fail-fast
