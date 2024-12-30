@@ -1,6 +1,6 @@
 use clap::{CommandFactory, Parser, Subcommand};
-use nir_libs::ops::add::add;
-use nir_libs::ops::remove::remove;
+use noir_libs::ops::add::add;
+use noir_libs::ops::remove::remove;
 
 /// A CLI package manager for Noir | noir-libs.org
 #[derive(Parser)]
