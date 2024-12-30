@@ -15,7 +15,7 @@ jobs:
   release:
     uses: ./.github/workflows/_build-release.yml
     with:
-      scarb-tag: ${{ github.ref_name }}
+      noir-libs-tag: ${{ github.ref_name }}
 
   draft:
     name: draft release
