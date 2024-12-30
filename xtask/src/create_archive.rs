@@ -37,15 +37,19 @@ pub fn main(args: Args) -> Result<()> {
         target_dir = target_dir.join(target);
     }
 
-    for bin in list_binaries()? {
+    for bin in vec!["noir-libs".to_string()] {
         let file_name = format!("{bin}{bin_ext}");
+        println!("abba");
+        println!("abba");
         sh.copy_file(
             target_dir.join("release").join(&file_name),
             bin_dir.join(file_name),
         )?;
     }
 
-    for file in ["README.md", "SECURITY.md", "LICENSE"] {
+    //todo: add missing files when rdy
+    // for file in ["README.md", "SECURITY.md", "LICENSE"] {
+    for file in ["README.md"] {
         sh.copy_file(file, doc_dir.join(file))?;
     }
 
