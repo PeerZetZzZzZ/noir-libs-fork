@@ -74,11 +74,6 @@ jobs:
         shell: bash
         run: echo "CARGO=cross" >> $GITHUB_ENV
 
-      - name: Install OpenSSL dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libssl-dev pkg-config
-
       - name: Build
         run: ${{ env.CARGO }} build --release --locked --target ${{ matrix.target }}
 
