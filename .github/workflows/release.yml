@@ -32,7 +32,7 @@ jobs:
       - name: Unpack artifacts to staging directory
         run: |
           mkdir -p artifacts
-          mv artifacts-dl/build-*/scarb-* artifacts/
+          mv artifacts-dl/build-*/noir-libs-* artifacts/
           mv artifacts-dl/checksums/* artifacts/
           ls -lh artifacts/
 

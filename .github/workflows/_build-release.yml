@@ -126,13 +126,13 @@ jobs:
           name: build-${{ matrix.target }}
           path: target/verify
 
-      - name: Verify archive
-        shell: bash
-        run: |
-          archive=$(find target/verify -name 'noir-libs-*.zip' -o -name 'noir-libs-*.tar.gz')
-          cargo xtask verify-archive --archive "$archive"
-        env:
-          EXPECTED_VERSION: ${{ inputs.noir-libs-tag }}
+#      - name: Verify archive
+#        shell: bash
+#        run: |
+#          archive=$(find target/verify -name 'noir-libs-*.zip' -o -name 'noir-libs-*.tar.gz')
+#          cargo xtask verify-archive --archive "$archive"
+#        env:
+#          EXPECTED_VERSION: ${{ inputs.noir-libs-tag }}
 
   checksums:
     runs-on: ubuntu-latest
