@@ -28,7 +28,7 @@ command!(Command(
     nightly_release_notes,
     set_cairo_version,
     set_scarb_version,
-    verify_archive,
+    // verify_archive,
 ));
 
 #[derive(Parser)]
