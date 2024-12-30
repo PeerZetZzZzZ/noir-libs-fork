@@ -1,5 +1,6 @@
 use clap::{CommandFactory, Parser, Subcommand};
-use noir_libs::ops::{add, remove};
+use nir_libs::ops::add::add;
+use nir_libs::ops::remove::remove;
 
 /// A CLI package manager for Noir | noir-libs.org
 #[derive(Parser)]
@@ -71,9 +72,9 @@ fn main() {
 }
 
 fn add_package(package_name: &str, version: &str) {
-    crate::add::add(package_name, version);
+    add(package_name, version);
 }
 
 fn remove_package(package_name: &str) {
-    crate::remove::remove(package_name);
+    remove(package_name);
 }
