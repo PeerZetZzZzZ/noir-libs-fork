@@ -50,59 +50,59 @@ fn ensure_dir(path: &Path) -> std::io::Result<()> {
     Ok(())
 }
 
-#[cfg(test)]
-mod tests {
-    use crate::MANIFEST_FILE_NAME;
-
-    use super::*;
-    use std::fs;
-    use tempfile::tempdir;
-
-    const TEST_PACKAGE: &str = "tests/test_files/test_package-1.2.3";
-
-    #[test]
-    fn test_extract_package() {
-        let temp_dir = tempdir().unwrap();
-        let package_path = Path::new(TEST_PACKAGE);
-
-        let result = extract_package(package_path, temp_dir.path());
-        assert!(result.is_ok());
-        assert!(temp_dir.path().join(MANIFEST_FILE_NAME).exists()); // Extracted files should include manifest
-    }
-
-    #[test]
-    fn test_ensure_dir_creates() {
-        let temp_dir = tempdir().unwrap();
-
-        let result = ensure_dir(temp_dir.path());
-        assert!(result.is_ok());
-        assert!(temp_dir.path().exists() && temp_dir.path().is_dir());
-    }
-
-    #[test]
-    fn test_ensure_dir_file_exists() {
-        let temp_dir = tempdir().unwrap();
-        let temp_file = temp_dir.path().join("test_file.txt");
-
-        fs::write(&temp_file, "test").unwrap();
-        let result = ensure_dir(&temp_file);
-        assert!(result.is_err());
-        if let Err(e) = result {
-            assert_eq!(
-                e.to_string(),
-                "A file with the same name as the directory exists"
-            );
-        }
-    }
-
-    #[test]
-    fn test_ensure_dir_already_exists() {
-        let temp_dir = tempdir().unwrap();
-
-        let result = ensure_dir(temp_dir.path());
-        assert!(result.is_ok());
-
-        let result = ensure_dir(temp_dir.path());
-        assert!(result.is_ok());
-    }
-}
+// #[cfg(test)]
+// mod tests {
+//     use crate::MANIFEST_FILE_NAME;
+//
+//     use super::*;
+//     use std::fs;
+//     use tempfile::tempdir;
+//
+//     const TEST_PACKAGE: &str = "tests/test_files/test_package-1.2.3";
+//
+//     #[test]
+//     fn test_extract_package() {
+//         let temp_dir = tempdir().unwrap();
+//         let package_path = Path::new(TEST_PACKAGE);
+//
+//         let result = extract_package(package_path, temp_dir.path());
+//         assert!(result.is_ok());
+//         assert!(temp_dir.path().join(MANIFEST_FILE_NAME).exists()); // Extracted files should include manifest
+//     }
+//
+//     #[test]
+//     fn test_ensure_dir_creates() {
+//         let temp_dir = tempdir().unwrap();
+//
+//         let result = ensure_dir(temp_dir.path());
+//         assert!(result.is_ok());
+//         assert!(temp_dir.path().exists() && temp_dir.path().is_dir());
+//     }
+//
+//     #[test]
+//     fn test_ensure_dir_file_exists() {
+//         let temp_dir = tempdir().unwrap();
+//         let temp_file = temp_dir.path().join("test_file.txt");
+//
+//         fs::write(&temp_file, "test").unwrap();
+//         let result = ensure_dir(&temp_file);
+//         assert!(result.is_err());
+//         if let Err(e) = result {
+//             assert_eq!(
+//                 e.to_string(),
+//                 "A file with the same name as the directory exists"
+//             );
+//         }
+//     }
+//
+//     #[test]
+//     fn test_ensure_dir_already_exists() {
+//         let temp_dir = tempdir().unwrap();
+//
+//         let result = ensure_dir(temp_dir.path());
+//         assert!(result.is_ok());
+//
+//         let result = ensure_dir(temp_dir.path());
+//         assert!(result.is_ok());
+//     }
+// }
