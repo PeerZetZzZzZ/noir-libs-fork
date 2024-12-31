@@ -53,19 +53,19 @@ mod tests {
     use super::*;
     use directories::ProjectDirs;
 
-    // #[test]
-    // fn test_get_cache_dir() {
-    //     let package_name = env!("CARGO_PKG_NAME");
-    //     let company_name = "TestCompany";
-    //     let company_tld = "test";
-    //
-    //     // Create a mock ProjectDirs instance
-    //     let proj_dirs = ProjectDirs::from(company_tld, company_name, package_name).unwrap();
-    //     let cache_dir = proj_dirs.cache_dir().to_path_buf();
-    //
-    //     // Call the function and assert the result
-    //     let result = get_cache_dir();
-    //     assert!(result.is_some());
-    //     assert_eq!(result.unwrap(), cache_dir);
-    // }
+    #[test]
+    fn test_get_cache_dir() {
+        let package_name = env!("CARGO_PKG_NAME");
+        let company_name = "TestCompany";
+        let company_tld = "test";
+
+        // Create a mock ProjectDirs instance
+        let proj_dirs = ProjectDirs::from(company_tld, company_name, package_name).unwrap();
+        let cache_dir = proj_dirs.cache_dir().to_path_buf();
+
+        // Call the function and assert the result
+        let result = get_cache_dir();
+        assert!(result.is_some());
+        assert_eq!(result.unwrap(), cache_dir);
+    }
 }
